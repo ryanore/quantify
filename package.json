@@ -6,7 +6,7 @@
   "repository": "ssh://git@stash.jellyvision.com:7999/agen/squish-component-redux.git",
   "scripts": {
     "start": "NODE_ENV=development node server.js",
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require ./test/setup.js --recursive ./test",
     "test:watch": "NODE_ENV=test npm run test -- --watch",
     "test:cov": "NODE_ENV=test babel-node node_modules/.bin/isparta cover node_modules/.bin/_mocha -- --recursive --require ./test/setup.js"
   },
