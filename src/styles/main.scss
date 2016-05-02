@@ -2,3 +2,16 @@
 @import '~node-normalize-scss/normalize';
 @include border-box-sizing;
 $susy: (columns: 12);
+
+.controls{
+  display: block;
+  cursor: pointer;
+}
+
+.block{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: black;
+  margin: 1px;
+}
