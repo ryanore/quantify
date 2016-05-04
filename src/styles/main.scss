@@ -2,16 +2,41 @@
 @import '~node-normalize-scss/normalize';
 @include border-box-sizing;
 $susy: (columns: 12);
+$grey: #333;
+
+.app-container{
+  padding: 20px;
+}
 
 .controls{
   display: block;
   cursor: pointer;
 }
 
+.stage{
+  min-height: 100px;
+}
+
 .block{
   display: inline-block;
   width: 10px;
   height: 10px;
-  background: black;
+  background: $grey;
   margin: 1px;
+}
+
+
+.display-group {
+  overflow: hidden;
+  width: 50%;
+  padding: 20px;
+  display: block;
+  float: left;
+  height: 100%;
+  border: 1px solid $grey;
+}
+
+input{
+  max-width: 200px;
+  width: 100%;
 }
