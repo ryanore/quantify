@@ -34,6 +34,10 @@ $grey: #333;
   float: left;
   height: 100%;
   border: 1px solid $grey;
+
+  &:first-of-type{
+    border-right: none;
+  }
 }
 
 input{
