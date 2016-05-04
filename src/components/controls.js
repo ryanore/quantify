@@ -44,7 +44,6 @@ export default class Controls extends Component {
    * Render a seemingly simple input
    */
   render() {
-    console.log(this.state);
     return (
       <div className="controls">
         <input

@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import DisplayGroup  from './display-group';
+import AppHeader  from './app-header';
 
 /**
  * Class App
@@ -13,6 +14,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="app-container">
+        <AppHeader />
         <DisplayGroup />
         <DisplayGroup />
       </div>

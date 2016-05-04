@@ -14,15 +14,15 @@ export default class App extends Component {
   }
 
   updateQuantity(q) {
-    console.log('update: ', q);
     this.setState({quantity: q });
   }
 
   render() {
     return (
-      <div className="app-container">
-        <Stage quantity={this.state.quantity} />
+      <div className="display-group">
         <Controls quantity={this.state.quantity} onChange={this.updateQuantity}/>
+        <hr />
+        <Stage quantity={this.state.quantity} />
       </div>
     );
   }

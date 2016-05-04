@@ -15,7 +15,7 @@ export default class Stage extends Component {
   buildObjects() {
     let objects = [];
     let i = this.state.quantity;
-    while( i >= 0 ) {
+    while( i > 0 ) {
       objects.push(<div className="block" key={i}></div>);
       i--;
       console.log('while ', i);
@@ -28,7 +28,6 @@ export default class Stage extends Component {
     let objects = this.buildObjects();
     return (
       <div className="stage">
-        {this.state.quantity}
         {objects}
       </div>
     );
