@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import Canvas from './canvas-display';
 
 export default class Stage extends Component {
   constructor(props) {
@@ -12,24 +13,9 @@ export default class Stage extends Component {
     }
   }
 
-  buildObjects() {
-    let objects = [];
-    let i = this.state.quantity;
-    while( i > 0 ) {
-      objects.push(<div className="block" key={i}></div>);
-      i--;
-      console.log('while ', i);
-    }
-    return objects;
-  }
-
   render() {
-    let i = 0;
-    let objects = this.buildObjects();
     return (
-      <div className="stage">
-        {objects}
-      </div>
+      <Canvas quantity={this.state.quantity} />
     );
   }
 }

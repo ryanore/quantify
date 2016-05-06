@@ -1,11 +1,23 @@
 @import "~susy/sass/susy";
 @import '~node-normalize-scss/normalize';
 @include border-box-sizing;
-$susy: (columns: 12);
+
+/* Changing Susy default global settings */
+$susy: (
+  columns: 12,
+  container: 1120px,
+  global-box-sizing: border-box
+  );
+
+/* Makes border-box properties */
+@include border-box-sizing;
+
+
 $grey: #333;
 
 .app-container{
   padding: 20px;
+  @include container();
 }
 
 .controls{
@@ -27,17 +39,7 @@ $grey: #333;
 
 
 .display-group {
-  overflow: hidden;
-  width: 50%;
-  padding: 20px;
-  display: block;
-  float: left;
-  height: 100%;
-  border: 1px solid $grey;
-
-  &:first-of-type{
-    border-right: none;
-  }
+  @include span(12);
 }
 
 input{

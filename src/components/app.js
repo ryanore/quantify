@@ -16,7 +16,6 @@ export default class App extends Component {
       <div className="app-container">
         <AppHeader />
         <DisplayGroup />
-        <DisplayGroup />
       </div>
     );
   }
