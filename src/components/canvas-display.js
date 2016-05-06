@@ -5,10 +5,10 @@ export default class CanvasDisplay extends Component {
   static defaultProps = {
     quantity: 0,
     canvasProps: {
-      width: '100%',
-      height: '100%',
-      radius: 4,
-      colors: ['red', 'green', 'blue', 'yellow', 'magenta']
+      width: 600,
+      height: 600,
+      radius: 1,
+      colors: ['black']
     }
   }
 
@@ -50,7 +50,7 @@ export default class CanvasDisplay extends Component {
    * This should occur any time the props change other than quantity
    * @return {CanvasRenderingContext2D}
    */
-  updateOffscreenCanvas() {
+  updateOffscreenCanvas(props) {
     const {width, height, radius, colors} = this.props.canvasProps;
     const n = colors.length;
     const d = radius * 2;
@@ -98,14 +98,12 @@ export default class CanvasDisplay extends Component {
     }
   }
 
-
   /**
    * Only re-render if the canvasProps have changed
    */
   shouldComponentUpdate(newProps) {
     return newProps.canvasProps !== this.props.canvasProps;
   }
-
 
   render() {
     const {width, height} = this.props.canvasProps;
