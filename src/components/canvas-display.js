@@ -5,11 +5,16 @@ export default class CanvasDisplay extends Component {
   static defaultProps = {
     quantity: 0,
     canvasProps: {
-      width: 600,
-      height: 600,
-      radius: 1,
-      colors: ['black']
+      width: 500,
+      height: 500,
+      radius: .5,
+      colors: ['yellow','red', 'blue', 'green']
     }
+  }
+
+  constructor (props) {
+    super(props);
+    console.log(this.props);
   }
 
   /**
