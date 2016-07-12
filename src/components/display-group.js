@@ -17,11 +17,20 @@ export default class DisplayGroup extends Component {
   }
 
   render() {
+    let cProps = {
+      width: 1200,
+      height: 600,
+      radius: 5,
+      colors: ['red']
+    };
+
+    let canvasProps = Object.assign(cProps, this.props);
+
     return (
       <div className="display-group">
         <Controls quantity={this.state.quantity} onChange={this.updateQuantity}/>
         <hr />
-        <Canvas quantity={this.state.quantity} />
+        <Canvas quantity={this.state.quantity} canvasProps={canvasProps} />
       </div>
     );
   }

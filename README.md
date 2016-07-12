@@ -1,11 +1,8 @@
-Phase1
-1. make a form input for taking numbers
-2. make a "Stage" area which will update a quantity divs with the quantity from the input.
-3. size those divs based on quantity so that they all fit
 
 Phase2
-1. make the "Stage" area use canvas instead of just outputting divs.
-2. on render, redraw the quantity inside the canvas
+2.  detect resize/orientation events and resize/rerender based on window size - header
+
+3.  update dot radius based on some scale factor
 
 Phase 3 :  grouping patterns
 2. new input for grouping by numbers (groups of 2, groups of 10)

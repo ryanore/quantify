@@ -1,14 +1,15 @@
 import React, { Component }  from 'react';
+import _ from 'underscore';
 
 export default class CanvasDisplay extends Component {
 
   static defaultProps = {
     quantity: 0,
     canvasProps: {
-      width: 500,
-      height: 500,
-      radius: 10,
-      colors: ['yellow','red', 'blue', 'green']
+      width: 1200,
+      height: 600,
+      radius: 2,
+      colors: ['black', 'red']
     }
   }
 
@@ -108,7 +109,7 @@ export default class CanvasDisplay extends Component {
    * Only re-render if the canvasProps have changed
    */
   shouldComponentUpdate(newProps) {
-    return newProps.canvasProps !== this.props.canvasProps;
+    return !_.isEqual(newProps.canvasProps , this.props.canvasProps);
   }
 
   render() {
