@@ -1,15 +1,20 @@
 import React, { Component }  from 'react';
+import _ from 'underscore';
 
 export default class CanvasDisplay extends Component {
 
   static defaultProps = {
     quantity: 0,
     canvasProps: {
-      width: 600,
+      width: 1200,
       height: 600,
-      radius: 1,
-      colors: ['black']
+      radius: 2,
+      colors: ['black', 'red']
     }
+  }
+
+  constructor (props) {
+    super(props);
   }
 
   /**
@@ -18,12 +23,15 @@ export default class CanvasDisplay extends Component {
    */
   getPoints(num) {
     const n = this.props.canvasProps.colors.length;
+    const r = this.props.canvasProps.radius;
+    const pad = r*4;
     const points = [];
     for (var i = 0; i < num; ++i) {
       points.push({
         c: Math.floor(n * Math.random()),
-        x: Math.floor(this.canvas.width * Math.random()),
-        y: Math.floor(this.canvas.height * Math.random())
+        x: Math.floor((this.canvas.width-pad) * Math.random()) -r,
+        y: Math.floor((this.canvas.height-pad) * Math.random()) -r,
+        pad: r*2
       });
     }
     return points;
@@ -36,12 +44,12 @@ export default class CanvasDisplay extends Component {
   paint(points) {
     const r = this.props.canvasProps.radius;
     const d = r * 2;
+
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     for (var i = 0; i < points.length; ++i) {
       var p = points[i];
-      this.ctx.drawImage(this.offScreen, p.c * d, 0, d, d, p.x - r, p.y - r, d, d);
+      this.ctx.drawImage(this.offScreen, p.c * d, 0, d, d, p.x+p.pad, p.y+p.pad, d, d);
     }
-    console.log(document.querySelector('.canvasDisplay'));
   }
 
 
@@ -73,7 +81,6 @@ export default class CanvasDisplay extends Component {
   componentDidMount() {
     this.offScreen = document.createElement('canvas');
     this.offCtx = this.offScreen.getContext('2d');
-    document.body.appendChild(this.offScreen);
 
     this.canvas = this.refs.canvasDisplay;
     this.ctx = this.canvas.getContext('2d');
@@ -102,7 +109,7 @@ export default class CanvasDisplay extends Component {
    * Only re-render if the canvasProps have changed
    */
   shouldComponentUpdate(newProps) {
-    return newProps.canvasProps !== this.props.canvasProps;
+    return !_.isEqual(newProps.canvasProps , this.props.canvasProps);
   }
 
   render() {

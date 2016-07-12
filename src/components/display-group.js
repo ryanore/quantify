@@ -1,12 +1,11 @@
 import React, { Component }  from 'react';
 import Controls  from './controls';
-import Stage  from './stage';
+import Canvas from './canvas-display';
 
 /**
- * Class App
- * Top Level Application Container
+ * Class DisplayGroup
  */
-export default class App extends Component {
+export default class DisplayGroup extends Component {
   constructor() {
     super();
     this.state = {quantity:0};
@@ -18,11 +17,20 @@ export default class App extends Component {
   }
 
   render() {
+    let cProps = {
+      width: 1200,
+      height: 600,
+      radius: 5,
+      colors: ['red']
+    };
+
+    let canvasProps = Object.assign(cProps, this.props);
+
     return (
       <div className="display-group">
         <Controls quantity={this.state.quantity} onChange={this.updateQuantity}/>
         <hr />
-        <Stage quantity={this.state.quantity} />
+        <Canvas quantity={this.state.quantity} canvasProps={canvasProps} />
       </div>
     );
   }

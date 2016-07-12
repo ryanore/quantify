@@ -1,7 +1,9 @@
 import React, { Component }  from 'react';
 
-export default () => {
-  return (
-    <h1>Quantify</h1>
-  );
-};
+export default class extends Component{
+  render() {
+    return (
+      <h1>Quantify</h1>
+    );
+  }
+}
