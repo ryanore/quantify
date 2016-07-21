@@ -11,13 +11,14 @@ import AppHeader  from './app-header';
 export default class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {displayHeight: 600};
   }
 
   render() {
     return (
       <div className="app-container">
         <AppHeader />
-        <DisplayGroup ref="displayGroup1" height={this.state.displayHeight} />
+        <DisplayGroup height={this.state.displayHeight} />
        </div>
     );
   }
