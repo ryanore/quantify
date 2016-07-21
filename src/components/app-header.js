@@ -1,9 +1,7 @@
-import React, { Component }  from 'react';
+import React from 'react';
 
-export default class extends Component{
-  render() {
-    return (
-      <h1>Quantify</h1>
-    );
-  }
-}
+export default () => {
+  return (
+    <h1>Quantify</h1>
+  );
+};
