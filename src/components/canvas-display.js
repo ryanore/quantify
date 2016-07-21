@@ -4,7 +4,7 @@ import _ from 'underscore';
 export default class CanvasDisplay extends Component {
 
   static defaultProps = {
-    quantity: 0,
+    quantityData: [],
     canvasProps: {
       width: 1200,
       height: 600,
@@ -86,7 +86,8 @@ export default class CanvasDisplay extends Component {
     this.ctx = this.canvas.getContext('2d');
 
     this.updateOffscreenCanvas();
-    this.paint(this.getPoints(this.props.quantity));
+    console.log('PAINT!');
+    // this.paint(this.getPoints(this.props.quantity));
   }
 
   /**
@@ -100,9 +101,9 @@ export default class CanvasDisplay extends Component {
    * Rerender happend
    */
   componentWillReceiveProps(props) {
-    if( props.quantity !== this.props.quantity ) {
-      this.paint(this.getPoints(props.quantity));
-    }
+    // if( props.quantity !== this.props.quantity ) {
+    //   this.paint(this.getPoints(props.quantity));
+    // }
   }
 
   /**

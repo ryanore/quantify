@@ -1,36 +1,69 @@
 import React, { Component }  from 'react';
 import Controls  from './controls';
-import Canvas from './canvas-display';
+import CanvasDisplay from './canvas-display';
 
-/**
- * Class DisplayGroup
- */
 export default class DisplayGroup extends Component {
-  constructor() {
-    super();
-    this.state = {quantity:0};
-    this.updateQuantity = this.updateQuantity.bind(this);
+
+  constructor(props) {
+    super(props);
+    this.onRemoveSubject = this.onRemoveSubject.bind(this);
+
+    this.state = {
+      subjects: [
+        {name: 'test1', quantity: 100},
+        {name: 'test2', quantity: 200}
+      ],
+      canvasProps: {
+        width: 1200,
+        height: 600,
+        radius: 5,
+        colors: ['red']
+      }
+    };
   }
 
-  updateQuantity(q) {
-    this.setState({quantity: q });
-  }
-
-  render() {
-    let cProps = {
+  componentWillReceiveProps(props) {
+    let canvasProps = Object.assign({
       width: 1200,
       height: 600,
       radius: 5,
       colors: ['red']
-    };
+    }, props);
 
-    let canvasProps = Object.assign(cProps, this.props);
+    this.setState({canvasProps: canvasProps});
+  }
 
+  updateSubjects(subject) {
+    console.log('update!', subject);
+  }
+
+  addSubject() {
+    this.setState({
+      subjects: this.state.subjects.concat([{name: 'new subject', quantity: 0}])
+    });
+  }
+
+  onRemoveSubject(index) {
+    const s = this.state.subjects
+      .slice(0, index)
+      .concat(this.state.subjects.slice(index +1));
+    this.setState({subjects: s});
+  }
+
+  render() {
     return (
       <div className="display-group">
-        <Controls quantity={this.state.quantity} onChange={this.updateQuantity}/>
+        <button onClick={this.addSubject.bind(this)}>Add Subject</button>
+        <Controls
+          subjects={this.state.subjects}
+          onChange={this.updateSubjects}
+          removeSubject={this.onRemoveSubject}
+        />
         <hr />
-        <Canvas quantity={this.state.quantity} canvasProps={canvasProps} />
+        <CanvasDisplay
+          quantityData={this.state.subjects}
+          canvasProps={this.state.canvasProps}
+        />
       </div>
     );
   }
